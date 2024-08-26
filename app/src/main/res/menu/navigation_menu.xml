@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/itemFragmentInicio"
+          android:icon="@drawable/icon_fragment"
+          android:title="Inicio"
+
+    />
+
+    <item android:id="@+id/itemFragmentRol"
+          android:icon="@drawable/icon_fragment"
+          android:title="Rol"
+
+    />
+    <item android:id="@+id/itemFragmentModulo"
+          android:icon="@drawable/icon_fragment"
+          android:title="Modulo"
+
+    />
+
+</menu>

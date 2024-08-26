@@ -1,0 +1,32 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color blue_gray
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable icon_fragment
+id fragmentContainer
+id itemFragmentInicio
+id itemFragmentModulo
+id itemFragmentRol
+id navMenu
+layout activity_main
+layout fragment_inicio
+layout fragment_modulos
+layout fragment_rol
+menu navigation_menu
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string hello_blank_fragment
+string modulos
+string pagina_de_inicio
+style Theme.AppCompat.Light
+xml backup_rules
+xml data_extraction_rules

@@ -1,43 +1,56 @@
 package com.app.grm_android
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.app.grm_android.ui.theme.Grm_androidTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Grm_androidTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+class MainActivity : AppCompatActivity() {
+
+    lateinit var navigation : BottomNavigationView
+    private val onNavMenu = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.itemFragmentRol -> {
+                supportFragmentManager.commit {
+                    replace<FragmentRol>(R.id.fragmentContainer)
+                    setReorderingAllowed(true)
+                    addToBackStack("replacement")
                 }
+                return@OnNavigationItemSelectedListener true
             }
+            R.id.itemFragmentModulo -> {
+                supportFragmentManager.commit {
+                    replace<FragmentModulos>(R.id.fragmentContainer)
+                    setReorderingAllowed(true)
+                    addToBackStack("replacement")
+                }
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.itemFragmentInicio -> {
+                supportFragmentManager.commit {
+                    replace<FragmentInicio>(R.id.fragmentContainer)
+                    setReorderingAllowed(true)
+                    addToBackStack("replacement")
+                }
+                return@OnNavigationItemSelectedListener true
+            }
+            else -> false
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Grm_androidTheme {
-        Greeting("Android")
+        navigation = findViewById(R.id.navMenu)
+        navigation.setOnNavigationItemSelectedListener(onNavMenu)
+
+        // Insertar el fragmento
+            supportFragmentManager.commit {
+                replace<FragmentInicio>(R.id.fragmentContainer)
+                setReorderingAllowed(true)
+                addToBackStack("replacement")
+            }
     }
 }
